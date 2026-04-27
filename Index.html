@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M&C Capital - Human Needs — Recrutement International de Main-d'œuvre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --noir:#0a0a08;
+  --noir-2:#111110;
+  --noir-3:#1a1a18;
+  --or:#c9a96e;
+  --or-clair:#e8d5a3;
+  --or-pale:#f5edd6;
+  --blanc:#f8f6f0;
+  --gris:#6b6b65;
+  --gris-clair:#9a9a92;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Montserrat',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);overflow-x:hidden}
+
+/* CURSOR */
+*{cursor:none}
+#cursor{position:fixed;width:8px;height:8px;background:var(--or);border-radius:50%;pointer-events:none;z-index:9999;transition:transform 0.15s,opacity 0.15s;transform:translate(-50%,-50%)}
+#cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--or);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.08s,width 0.3s,height 0.3s,opacity 0.3s;transform:translate(-50%,-50%);opacity:0.5}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,padding 0.4s}
+nav.scrolled{background:rgba(10,10,8,0.95);backdrop-filter:blur(12px);padding:1rem 4rem;border-bottom:1px solid rgba(201,169,110,0.15)}
+.nav-logo{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--or);letter-spacing:0.05em}
+.nav-logo span{color:var(--blanc);font-style:italic}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris-clair);text-decoration:none;transition:color 0.3s;font-weight:500}
+.nav-links a:hover{color:var(--or)}
+.nav-cta{background:transparent;border:1px solid var(--or);color:var(--or);padding:0.6rem 1.5rem;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;font-family:var(--sans);font-weight:500;transition:all 0.3s;text-decoration:none}
+.nav-cta:hover{background:var(--or);color:var(--noir)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 4rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,169,110,0.06) 0%, transparent 70%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,169,110,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,0.04) 1px,transparent 1px);background-size:80px 80px;opacity:0.5}
+.hero-line{position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.2),transparent)}
+.hero-content{position:relative;z-index:2;max-width:700px}
+.hero-tag{display:inline-flex;align-items:center;gap:0.75rem;margin-bottom:2rem;opacity:0;animation:fadeUp 0.8s 0.2s forwards}
+.hero-tag-dot{width:5px;height:5px;background:var(--or);border-radius:50%}
+.hero-tag span{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--or);font-weight:500}
+.hero-title{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:2rem;opacity:0;animation:fadeUp 0.8s 0.4s forwards}
+.hero-title em{font-style:italic;color:var(--or)}
+.hero-subtitle{font-size:0.85rem;line-height:1.9;color:var(--gris-clair);max-width:480px;margin-bottom:3rem;opacity:0;animation:fadeUp 0.8s 0.6s forwards;font-weight:300;letter-spacing:0.03em}
+.hero-actions{display:flex;align-items:center;gap:2rem;opacity:0;animation:fadeUp 0.8s 0.8s forwards}
+.btn-primary{background:var(--or);color:var(--noir);padding:0.9rem 2.5rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;font-family:var(--sans);font-weight:600;border:none;text-decoration:none;transition:all 0.3s;display:inline-block}
+.btn-primary:hover{background:var(--or-clair);transform:translateY(-2px)}
+.btn-secondary{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gris-clair);text-decoration:none;display:flex;align-items:center;gap:0.75rem;transition:color 0.3s}
+.btn-secondary:hover{color:var(--or)}
+.btn-arrow{width:30px;height:1px;background:currentColor;display:inline-block;transition:width 0.3s}
+.btn-secondary:hover .btn-arrow{width:50px}
+.hero-stats{position:absolute;right:4rem;bottom:4rem;display:flex;flex-direction:column;gap:2rem;opacity:0;animation:fadeUp 0.8s 1s forwards}
+.hero-stat{text-align:right}
+.hero-stat-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:var(--or);line-height:1}
+.hero-stat-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris);margin-top:0.3rem;font-weight:500}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.75rem;opacity:0;animation:fadeUp 0.8s 1.2s forwards}
+.hero-scroll span{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gris);font-weight:500}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--or),transparent);animation:scrollPulse 2s infinite}
+
+/* SECTION BASE */
+section{padding:7rem 4rem}
+.section-tag{display:inline-flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem}
+.section-tag-line{width:30px;height:1px;background:var(--or)}
+.section-tag span{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--or);font-weight:500}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.1;margin-bottom:1.5rem}
+.section-title em{font-style:italic;color:var(--or)}
+.section-desc{font-size:0.85rem;line-height:1.9;color:var(--gris-clair);max-width:520px;font-weight:300;letter-spacing:0.02em}
+
+/* CHIFFRES */
+#chiffres{background:var(--noir-2);border-top:1px solid rgba(201,169,110,0.1);border-bottom:1px solid rgba(201,169,110,0.1);padding:4rem}
+.chiffres-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.chiffre-item{padding:2rem;border-right:1px solid rgba(201,169,110,0.1);text-align:center}
+.chiffre-item:last-child{border-right:none}
+.chiffre-num{font-family:var(--serif);font-size:3.5rem;font-weight:300;color:var(--or);line-height:1;display:block}
+.chiffre-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris-clair);margin-top:0.75rem;font-weight:500;display:block}
+
+/* MODELE */
+#modele{background:var(--noir)}
+.modele-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.modele-visual{position:relative}
+.modele-card{background:var(--noir-2);border:1px solid rgba(201,169,110,0.15);padding:2.5rem;position:relative}
+.modele-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--or),transparent)}
+.modele-flow{display:flex;flex-direction:column;gap:1rem}
+.flow-step{display:flex;align-items:center;gap:1.25rem;padding:1rem;border:1px solid rgba(201,169,110,0.08);transition:border-color 0.3s}
+.flow-step:hover{border-color:rgba(201,169,110,0.3)}
+.flow-num{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--or);min-width:2rem;opacity:0.6}
+.flow-content{}
+.flow-title{font-size:0.75rem;font-weight:500;letter-spacing:0.05em;color:var(--blanc);margin-bottom:0.2rem}
+.flow-sub{font-size:0.65rem;color:var(--gris);letter-spacing:0.03em}
+.flow-sep{display:flex;align-items:center;gap:1rem;padding:0 1rem}
+.flow-sep-line{flex:1;height:1px;background:rgba(201,169,110,0.1)}
+.flow-sep-dot{width:4px;height:4px;background:var(--or);border-radius:50%;opacity:0.4}
+.flow-sep-tag{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris);white-space:nowrap}
+.tarif-banner{margin-top:1.5rem;background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.2);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
+.tarif-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gris-clair)}
+.tarif-value{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--or)}
+.tarif-sub{font-size:0.6rem;color:var(--gris);display:block;margin-top:0.1rem;letter-spacing:0.08em}
+.modele-content .section-desc{margin-bottom:2.5rem}
+.modele-points{display:flex;flex-direction:column;gap:1.25rem}
+.modele-point{display:flex;gap:1rem;align-items:flex-start}
+.point-icon{width:20px;height:20px;border:1px solid var(--or);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.point-icon::after{content:'';width:6px;height:6px;background:var(--or)}
+.point-text{font-size:0.8rem;line-height:1.7;color:var(--gris-clair);font-weight:300}
+.point-text strong{color:var(--blanc);font-weight:500}
+
+/* MARCHÉS */
+#marches{background:var(--noir-3)}
+.marches-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+.marches-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.marche-card{background:var(--noir-2);border:1px solid rgba(201,169,110,0.1);padding:2.5rem;position:relative;overflow:hidden;transition:border-color 0.4s,transform 0.4s}
+.marche-card:hover{border-color:rgba(201,169,110,0.35);transform:translateY(-4px)}
+.marche-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--or),transparent);opacity:0;transition:opacity 0.4s}
+.marche-card:hover::after{opacity:1}
+.marche-flag{font-size:2.5rem;margin-bottom:1.5rem;display:block}
+.marche-pays{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--blanc);margin-bottom:0.4rem}
+.marche-phase{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--or);font-weight:500;margin-bottom:1.5rem;display:block}
+.marche-points{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+.marche-points li{font-size:0.75rem;color:var(--gris-clair);display:flex;align-items:center;gap:0.75rem;font-weight:300}
+.marche-points li::before{content:'';width:12px;height:1px;background:var(--or);flex-shrink:0}
+.secteurs-row{margin-top:4rem;border-top:1px solid rgba(201,169,110,0.1);padding-top:3rem}
+.secteurs-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gris);margin-bottom:1.5rem;font-weight:500}
+.secteurs-list{display:flex;flex-wrap:wrap;gap:0.75rem}
+.secteur-tag{border:1px solid rgba(201,169,110,0.2);padding:0.5rem 1.25rem;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris-clair);font-weight:500;transition:all 0.3s}
+.secteur-tag:hover{border-color:var(--or);color:var(--or)}
+
+/* PROCESSUS */
+#processus{background:var(--noir)}
+.processus-inner{display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start}
+.processus-steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:2rem;position:relative;padding-bottom:2.5rem}
+.step:last-child{padding-bottom:0}
+.step-left{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0}
+.step-num{width:40px;height:40px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.9rem;color:var(--or);flex-shrink:0}
+.step.active .step-num{background:var(--or);color:var(--noir);border-color:var(--or)}
+.step-connector{width:1px;flex:1;background:rgba(201,169,110,0.1);margin-top:0.5rem}
+.step-content{padding-top:0.6rem;padding-bottom:1rem}
+.step-resp{font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--or);font-weight:500;margin-bottom:0.4rem}
+.step-title{font-size:0.9rem;font-weight:500;color:var(--blanc);margin-bottom:0.4rem;letter-spacing:0.02em}
+.step-sub{font-size:0.75rem;color:var(--gris);font-weight:300;line-height:1.6}
+.step-delay{font-size:0.6rem;letter-spacing:0.1em;color:var(--gris-clair);margin-top:0.5rem;display:flex;align-items:center;gap:0.5rem}
+.step-delay::before{content:'';width:15px;height:1px;background:rgba(201,169,110,0.3)}
+.processus-note{background:var(--noir-2);border-left:2px solid var(--or);padding:2rem;margin-top:3rem}
+.processus-note-title{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--or);font-weight:500;margin-bottom:0.75rem}
+.processus-note-text{font-size:0.78rem;line-height:1.8;color:var(--gris-clair);font-weight:300}
+
+
+
+/* CONTACT */
+#contact{background:var(--noir-2);border-top:1px solid rgba(201,169,110,0.1)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
+.contact-content .section-title{margin-bottom:1.5rem}
+.contact-content .section-desc{margin-bottom:3rem}
+.contact-items{display:flex;flex-direction:column;gap:1.5rem}
+.contact-item{display:flex;gap:1.5rem;align-items:flex-start}
+.ci-icon{width:36px;height:36px;border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-icon svg{width:14px;height:14px;stroke:var(--or);fill:none;stroke-width:1.5}
+.ci-content{}
+.ci-label{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris);font-weight:500;margin-bottom:0.25rem}
+.ci-value{font-size:0.8rem;color:var(--blanc);font-weight:400}
+.ci-value a{color:var(--blanc);text-decoration:none;transition:color 0.3s}
+.ci-value a:hover{color:var(--or)}
+.contact-form{background:var(--noir);border:1px solid rgba(201,169,110,0.12);padding:3rem;position:relative}
+.contact-form::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--or),transparent)}
+.form-title{font-family:var(--serif);font-size:1.5rem;font-weight:300;margin-bottom:2rem;color:var(--blanc)}
+.form-group{margin-bottom:1.25rem}
+.form-label{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris-clair);font-weight:500;display:block;margin-bottom:0.5rem}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--noir-2);border:1px solid rgba(201,169,110,0.12);padding:0.85rem 1rem;font-size:0.8rem;color:var(--blanc);font-family:var(--sans);outline:none;transition:border-color 0.3s;-webkit-appearance:none}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--gris)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(201,169,110,0.5)}
+.form-select{color:var(--gris)}
+.form-select option{background:var(--noir-2);color:var(--blanc)}
+.form-textarea{resize:none;height:100px;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-submit{width:100%;background:var(--or);color:var(--noir);border:none;padding:1rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;font-family:var(--sans);font-weight:600;cursor:none;transition:all 0.3s;margin-top:0.5rem}
+.form-submit:hover{background:var(--or-clair)}
+.form-notice{font-size:0.65rem;color:var(--gris);text-align:center;margin-top:1rem;line-height:1.6;font-style:italic;font-family:var(--serif)}
+
+/* FOOTER */
+footer{background:var(--noir);border-top:1px solid rgba(201,169,110,0.1);padding:3rem 4rem}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--or)}
+.footer-logo span{color:var(--blanc);font-style:italic}
+.footer-copy{font-size:0.62rem;color:var(--gris);letter-spacing:0.08em}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:0.62rem;color:var(--gris);text-decoration:none;letter-spacing:0.08em;transition:color 0.3s}
+.footer-links a:hover{color:var(--or)}
+.footer-disclaimer{text-align:center;margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(201,169,110,0.05);font-size:0.6rem;color:rgba(107,107,101,0.6);letter-spacing:0.05em;font-style:italic;font-family:var(--serif)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:0.3;transform:scaleY(0.5);transform-origin:top}}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s,transform 0.8s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+/* OVERLAY MESSAGE */
+#toast{position:fixed;bottom:2rem;right:2rem;background:var(--or);color:var(--noir);padding:1rem 1.5rem;font-size:0.7rem;letter-spacing:0.1em;font-weight:600;transform:translateY(100px);transition:transform 0.4s;z-index:999}
+#toast.show{transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="toast">Message envoyé — nous vous recontactons sous 48h</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">M<span>&</span>C Capital<br><span style="font-size:0.65rem;letter-spacing:0.18em;color:var(--gris-clair);font-weight:400;font-style:normal">HUMAN NEEDS</span></div>
+  <ul class="nav-links">
+    <li><a href="#modele">Modèle</a></li>
+    <li><a href="#marches">Marchés</a></li>
+    <li><a href="#processus">Processus</a></li>
+
+  </ul>
+  <a href="#contact" class="nav-cta">Nous contacter</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span>Recrutement International · Maurice</span>
+    </div>
+    <h1 class="hero-title">
+      La main-d'œuvre<br>
+      qu'il vous faut,<br>
+      <em>là où elle existe.</em>
+    </h1>
+    <p class="hero-subtitle">
+      M&C Capital sélectionne, valide et livre des profils qualifiés depuis Madagascar et le Népal, prêts à intégrer vos équipes à Maurice — sans aucune contrainte administrative de votre côté.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Déposer un besoin</a>
+      <a href="#modele" class="btn-secondary">
+        <span class="btn-arrow"></span>
+        Découvrir le modèle
+      </a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">5</span>
+      <div class="hero-stat-label">Licences octroyées<br>à Maurice</div>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">J+25</span>
+      <div class="hero-stat-label">Dossier complet<br>livré</div>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">100%</span>
+      <div class="hero-stat-label">Pré-arrivée<br>géré pour vous</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Défiler</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- CHIFFRES -->
+<div id="chiffres">
+  <div class="chiffres-grid">
+    <div class="chiffre-item reveal">
+      <span class="chiffre-num">30 000</span>
+      <span class="chiffre-label">MUR par position<br>tout inclus</span>
+    </div>
+    <div class="chiffre-item reveal reveal-delay-1">
+      <span class="chiffre-num">5</span>
+      <span class="chiffre-label">Secteurs cibles<br>à Maurice</span>
+    </div>
+    <div class="chiffre-item reveal reveal-delay-2">
+      <span class="chiffre-num">2</span>
+      <span class="chiffre-label">Marchés sources<br>MG & NP</span>
+    </div>
+    <div class="chiffre-item reveal reveal-delay-3">
+      <span class="chiffre-num">30j</span>
+      <span class="chiffre-label">Délai maximum<br>de paiement</span>
+    </div>
+  </div>
+</div>
+
+<!-- MODELE -->
+<section id="modele">
+  <div class="modele-inner">
+    <div class="modele-visual reveal">
+      <div class="modele-card">
+        <div class="modele-flow">
+          <div class="flow-step">
+            <span class="flow-num">01</span>
+            <div class="flow-content">
+              <div class="flow-title">Mandat client</div>
+              <div class="flow-sub">Analyse du besoin · Bon de commande signé</div>
+            </div>
+          </div>
+          <div class="flow-sep">
+            <div class="flow-sep-line"></div>
+            <span class="flow-sep-dot"></span>
+            <span class="flow-sep-tag">M&C Capital opère</span>
+            <span class="flow-sep-dot"></span>
+            <div class="flow-sep-line"></div>
+          </div>
+          <div class="flow-step">
+            <span class="flow-num">02</span>
+            <div class="flow-content">
+              <div class="flow-title">Sourcing terrain</div>
+              <div class="flow-sub">Mission Madagascar · Sélection des profils</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <span class="flow-num">03</span>
+            <div class="flow-content">
+              <div class="flow-title">Validation médicale</div>
+              <div class="flow-sub">Visite médicale sur place · Aptitude confirmée</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <span class="flow-num">04</span>
+            <div class="flow-content">
+              <div class="flow-title">Dossier complet</div>
+              <div class="flow-sub">Documents traduits, légalisés, transmis</div>
+            </div>
+          </div>
+          <div class="flow-sep">
+            <div class="flow-sep-line"></div>
+            <span class="flow-sep-dot"></span>
+            <span class="flow-sep-tag">Votre responsabilité</span>
+            <span class="flow-sep-dot"></span>
+            <div class="flow-sep-line"></div>
+          </div>
+          <div class="flow-step">
+            <span class="flow-num">05</span>
+            <div class="flow-content">
+              <div class="flow-title">Visa & arrivée</div>
+              <div class="flow-sub">Permis de travail · Accueil · Intégration</div>
+            </div>
+          </div>
+        </div>
+        <div class="tarif-banner">
+          <div>
+            <span class="tarif-label">Honoraires tout inclus</span>
+            <span class="tarif-sub">Sourcing · Médical · Dossier complet</span>
+          </div>
+          <div style="text-align:right">
+            <span class="tarif-value">30 000</span>
+            <span class="tarif-sub" style="color:var(--or-clair)">MUR / position · Prix fixe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modele-content">
+      <div class="section-tag reveal">
+        <div class="section-tag-line"></div>
+        <span>Modèle opérationnel</span>
+      </div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Une délégation<br>
+        <em>totale & sécurisée</em>
+      </h2>
+      <p class="section-desc reveal reveal-delay-2">
+        Vous définissez le profil. Nous faisons le reste — jusqu'à la remise du dossier complet, prêt pour la demande de visa. Aucune gestion terrain, aucun déplacement, aucune surprise administrative.
+      </p>
+      <div class="modele-points reveal reveal-delay-3">
+        <div class="modele-point">
+          <div class="point-icon"></div>
+          <p class="point-text"><strong>Licence gouvernementale exclusive</strong> — Entreprise X est l'un des 5 opérateurs autorisés à Maurice. Vous bénéficiez d'un cadre légal irréprochable.</p>
+        </div>
+        <div class="modele-point">
+          <div class="point-icon"></div>
+          <p class="point-text"><strong>Zéro responsabilité post-arrivée</strong> — Visas, logement, charges sociales : ces obligations restent entièrement à votre charge en tant qu'employeur, conformément à la loi mauricienne.</p>
+        </div>
+        <div class="modele-point">
+          <div class="point-icon"></div>
+          <p class="point-text"><strong>Facturation simple, paiement à la livraison</strong> — 30 000 MUR par position, exigibles à la remise du dossier validé. Aucun frais caché.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARCHÉS -->
+<section id="marches">
+  <div class="marches-header">
+    <div>
+      <div class="section-tag reveal">
+        <div class="section-tag-line"></div>
+        <span>Marchés sources</span>
+      </div>
+      <h2 class="section-title reveal reveal-delay-1">Là où nous<br><em>recrutons pour vous</em></h2>
+    </div>
+    <p class="section-desc reveal" style="max-width:320px;text-align:right">Deux marchés complémentaires pour couvrir l'ensemble de vos besoins en main-d'œuvre.</p>
+  </div>
+  <div class="marches-grid">
+    <div class="marche-card reveal">
+      <span class="marche-flag">🇲🇬</span>
+      <div class="marche-pays">Madagascar</div>
+      <span class="marche-phase">Marché prioritaire · Phase 1</span>
+      <ul class="marche-points">
+        <li>Proximité géographique avec Maurice</li>
+        <li>Main-d'œuvre francophone intégrable</li>
+        <li>Coûts de recrutement maîtrisés</li>
+        <li>Visite médicale organisée sur place</li>
+        <li>Réseau de partenaires locaux actif</li>
+      </ul>
+    </div>
+    <div class="marche-card reveal reveal-delay-1">
+      <span class="marche-flag">🇳🇵</span>
+      <div class="marche-pays">Népal</div>
+      <span class="marche-phase">Marché stratégique · Phase 2</span>
+      <ul class="marche-points">
+        <li>Forte culture d'expatriation</li>
+        <li>Profils adaptés construction & services</li>
+        <li>Cadre réglementaire d'émigration structuré</li>
+        <li>Profils qualifiés & expérimentés</li>
+        <li>Intégration progressive dès la phase 2</li>
+      </ul>
+    </div>
+    <div class="marche-card reveal reveal-delay-2" style="background:rgba(201,169,110,0.03);border-color:rgba(201,169,110,0.2)">
+      <span class="marche-flag" style="opacity:0.3">🌍</span>
+      <div class="marche-pays" style="color:var(--gris)">Expansion</div>
+      <span class="marche-phase">Marchés futurs · Phase 3</span>
+      <ul class="marche-points">
+        <li style="opacity:0.5">Analyse continue de nouveaux bassins</li>
+        <li style="opacity:0.5">Critères : volume, coût, qualité, cadre légal</li>
+        <li style="opacity:0.5">Diversification géographique maîtrisée</li>
+        <li style="opacity:0.5">Sur demande spécifique des clients</li>
+        <li style="opacity:0.5">Horizon 18-24 mois</li>
+      </ul>
+    </div>
+  </div>
+  <div class="secteurs-row reveal">
+    <div class="secteurs-title">Secteurs cibles à Maurice</div>
+    <div class="secteurs-list">
+      <span class="secteur-tag">Construction & BTP</span>
+      <span class="secteur-tag">Hôtellerie & Restauration</span>
+      <span class="secteur-tag">Agriculture & Agroalimentaire</span>
+      <span class="secteur-tag">Manufacturing & Industrie</span>
+      <span class="secteur-tag">Services & Domestic Work</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section id="processus">
+  <div class="processus-inner">
+    <div>
+      <div class="section-tag reveal">
+        <div class="section-tag-line"></div>
+        <span>Processus</span>
+      </div>
+      <h2 class="section-title reveal reveal-delay-1">De la demande<br>au <em>dossier livré</em></h2>
+      <p class="section-desc reveal reveal-delay-2">Un processus éprouvé, entièrement géré par M&C Capital, du premier entretien jusqu'à la remise des documents.</p>
+      <div class="processus-note reveal reveal-delay-3">
+        <div class="processus-note-title">Clause visa — Important</div>
+        <p class="processus-note-text">La délivrance et la gestion des visas et permis de travail sont de la seule responsabilité de l'employeur mauricien. Ni Entreprise X, ni M&C Capital n'interviennent dans cette démarche.</p>
+      </div>
+    </div>
+    <div class="processus-steps reveal">
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num active">01</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <span class="step-resp">M&C Capital</span>
+          <div class="step-title">Mandat & analyse du besoin</div>
+          <div class="step-sub">Acquisition client, analyse du profil requis, signature du contrat de service.</div>
+          <span class="step-delay">J+0</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">02</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <span class="step-resp">M&C Capital</span>
+          <div class="step-title">Mission sourcing terrain</div>
+          <div class="step-sub">Déplacement à Madagascar, entretiens, sélection des candidats correspondant au profil.</div>
+          <span class="step-delay">J+3 à J+14</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">03</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <span class="step-resp">M&C Capital</span>
+          <div class="step-title">Visite médicale</div>
+          <div class="step-sub">Organisation et validation des visites médicales sur place. Aptitude physique confirmée.</div>
+          <span class="step-delay">J+14 à J+20</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">04</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <span class="step-resp">M&C Capital → Entreprise X</span>
+          <div class="step-title">Constitution & transmission du dossier</div>
+          <div class="step-sub">Documents d'identité, certificats médicaux, traductions légalisées. Dossier transmis pour validation finale.</div>
+          <span class="step-delay">J+20 à J+25</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">05</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <span class="step-resp" style="color:var(--gris-clair)">Employeur client</span>
+          <div class="step-title">Démarches visa & permis de travail</div>
+          <div class="step-sub">Procédure engagée auprès des autorités mauriciennes. Démarche parallèle, dès réception du dossier.</div>
+          <span class="step-delay">En parallèle</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">06</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <span class="step-resp">Entreprise X</span>
+          <div class="step-title">Validation & facturation</div>
+          <div class="step-sub">Contrôle final du dossier, validation, émission de la facture de 30 000 MUR au client.</div>
+          <span class="step-delay">J+22 à J+25</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">07</div>
+        </div>
+        <div class="step-content">
+          <span class="step-resp" style="color:var(--gris-clair)">Employeur client</span>
+          <div class="step-title">Accueil & intégration</div>
+          <div class="step-sub">Logement, intégration opérationnelle, gestion RH — entièrement à la charge de l'employeur.</div>
+          <span class="step-delay">Dès visa accordé</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-content">
+      <div class="section-tag reveal">
+        <div class="section-tag-line"></div>
+        <span>Contact</span>
+      </div>
+      <h2 class="section-title reveal reveal-delay-1">Parlons de<br>votre <em>besoin</em></h2>
+      <p class="section-desc reveal reveal-delay-2">Vous avez un besoin en main-d'œuvre étrangère ? Déposez votre demande. Nous analysons votre besoin et revenons vers vous sous 48 heures.</p>
+      <div class="contact-items reveal reveal-delay-3">
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="ci-content">
+            <span class="ci-label">Max Neyraud</span>
+            <span class="ci-value"><a href="mailto:max@neuron-global.com">max@neuron-global.com</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="ci-content">
+            <span class="ci-label">Arthur Neyraud</span>
+            <span class="ci-value"><a href="mailto:arthur.neyraud@phydelis.com">arthur.neyraud@phydelis.com</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="ci-content">
+            <span class="ci-label">Neuron Global</span>
+            <span class="ci-value"><a href="https://www.neuron-global.com" target="_blank">www.neuron-global.com</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="ci-content">
+            <span class="ci-label">Territoire d'opération</span>
+            <span class="ci-value">Maurice · Madagascar · Népal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-2">
+      <div class="form-title">Déposer un besoin en main-d'œuvre</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Entreprise</label>
+          <input type="text" class="form-input" placeholder="Nom de votre entreprise" id="f-entreprise">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Contact</label>
+          <input type="text" class="form-input" placeholder="Votre nom complet" id="f-contact">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="votre@email.com" id="f-email">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Secteur d'activité</label>
+          <select class="form-select form-input" id="f-secteur">
+            <option value="" disabled selected>Choisir</option>
+            <option>Construction & BTP</option>
+            <option>Hôtellerie & Restauration</option>
+            <option>Agriculture & Agroalimentaire</option>
+            <option>Manufacturing & Industrie</option>
+            <option>Services & Domestic Work</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nombre de positions</label>
+          <input type="number" class="form-input" placeholder="Ex : 5" id="f-positions" min="1">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Profil(s) recherché(s) & précisions</label>
+        <textarea class="form-textarea" placeholder="Décrivez les compétences, l'expérience requise et le contexte..." id="f-message"></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Envoyer la demande</button>
+      <p class="form-notice">Document confidentiel — Vos informations ne sont pas divulguées à des tiers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">M<span>&</span>C Capital <span style="font-size:0.75rem;opacity:0.6;font-style:italic">Human Needs</span></div>
+    <div class="footer-links">
+      <a href="#modele">Modèle</a>
+      <a href="#marches">Marchés</a>
+      <a href="#processus">Processus</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 M&C Capital - Human Needs · Neuron Global · Tous droits réservés</div>
+  </div>
+  <div class="footer-disclaimer">
+    Document confidentiel — Ce site est destiné aux employeurs mauriciens et partenaires institutionnels de M&C Capital.<br>
+    La délivrance des visas et permis de travail relève de la seule responsabilité de l'employeur mauricien.
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)}
+animRing();
+document.querySelectorAll('a,button,.marche-card,.partner-card,.flow-step,.secteur-tag,.proj-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';ring.style.width='60px';ring.style.height='60px';ring.style.opacity='0.3'});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.width='36px';ring.style.height='36px';ring.style.opacity='0.5'});
+});
+
+// NAV SCROLL
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+
+// REVEAL
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// FORM
+function submitForm(){
+  const fields=['f-entreprise','f-contact','f-email','f-secteur','f-positions'];
+  const empty=fields.some(id=>!document.getElementById(id).value);
+  if(empty){document.querySelectorAll('.form-input,.form-select').forEach(el=>{if(!el.value)el.style.borderColor='rgba(201,100,100,0.5)';else el.style.borderColor=''});return;}
+  const toast=document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),4000);
+  ['f-entreprise','f-contact','f-email','f-secteur','f-positions','f-message'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el.tagName==='SELECT'){el.selectedIndex=0}else{el.value=''}
+  });
+}
+
+// SMOOTH ACTIVE NAV
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-200)cur=s.id});
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.style.color=a.getAttribute('href')==='#'+cur?'var(--or)':'';
+  });
+});
+</script>
+</body>
+</html>
