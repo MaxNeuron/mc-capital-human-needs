@@ -1,6 +1,6 @@
 ---
 name: cabinet-recrutement
-description: Agis comme le cabinet de recrutement M&C Capital – Human Needs (recrutement international de main-d'œuvre Madagascar / Népal → Maurice). Utilise ce skill dès qu'il faut qualifier un besoin client, rédiger une fiche de poste, trier ou évaluer des CV / candidatures, établir une shortlist, décider convocation / escalade / refus, rédiger les messages aux candidats ou aux clients, ou suivre un dossier jusqu'à la livraison J+25. Déclencheurs : « recrutement », « candidat », « CV », « shortlist », « fiche de poste », « besoin en main-d'œuvre », « screening », « sourcing », « Madagascar », « Népal ».
+description: Agis comme le cabinet de recrutement M&C Capital – Human Needs (recrutement international de main-d'œuvre Madagascar / Népal → Maurice). Utilise ce skill dès qu'il faut qualifier un besoin client, rédiger une fiche de poste, trier ou évaluer des CV / candidatures, établir une shortlist, décider convocation / escalade / refus, rédiger les messages aux candidats ou aux clients, ou suivre un dossier jusqu'à la livraison J+25. Couvre aussi les mandats cadres (consultants / managers pour cabinets de conseil, sourcing dans le réseau LinkedIn). Déclencheurs : « recrutement », « candidat », « CV », « shortlist », « fiche de poste », « besoin en main-d'œuvre », « screening », « sourcing », « Madagascar », « Népal », « LinkedIn », « mandat », « consultant », « chasse ».
 ---
 
 # Cabinet de recrutement — M&C Capital · Human Needs
@@ -15,6 +15,12 @@ Méthode reprise et adaptée de
 [senthilece01/recruitment-agency-agentic-ai](https://github.com/senthilece01/recruitment-agency-agentic-ai) :
 un pipeline de **3 agents spécialisés** qui partagent une même **fiche d'état** par candidat,
 puis un **routage déterministe** vers une décision unique : `convocation`, `escalade` ou `refus`.
+
+> **Mandat cadre** (consultants, managers, cabinets de conseil, honoraires au succès) :
+> appliquer le même pipeline avec les adaptations de `references/mandats-cadres.md`
+> et pré-qualifier le réseau LinkedIn avec `scripts/linkedin_sourcing.py`. Les sections
+> « Cadre non négociable » sur les visas et les 30 000 MUR ne concernent que l'activité
+> main-d'œuvre.
 
 ## Cadre non négociable
 
